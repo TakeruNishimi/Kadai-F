@@ -7,18 +7,19 @@
 <body>
 <h1>Simple BBS</h1>
 <form action="/" method="POST">
-    UserName: <input type="text" name="username">
-    <br>
-    Message: <input type="text" name="message">
-    <br>
-    <input type="submit" name="submit">
+    <ul style="list-style:none">
+        UserName: <li><input type="text" name="username"></li>
+        <br>
+        Message:  <li><input type="text" name="message"></li>
+        <br>
+        <input type="submit" name="submit">
+    </ul>
 </form>
 
 {% for message in message_list %}
 <hr>
 <li>{{message}}</li>
 {% endfor %}
-
 
 
 </body>

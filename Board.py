@@ -3,6 +3,7 @@ from flask import Flask, render_template, request ,redirect
 app = Flask(__name__)
 
 message_list = []
+user_list = []
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -11,13 +12,13 @@ def form():
         return render_template("board.html", message_list=message_list)
     if request.method == 'POST':
         username = request.form['username']
+        user_count = user_list.count(username) +1
+        user_list.append(username)
         message = request.form['message']
         if username == '':
             message_list.append(f'名無しさん:{message}')
             return redirect("/")
-            #return render_template("board.html", username='名無しさん', message=message)
-        message_list.append(f'{username}:{message}')
-        #return render_template("board.html", username=username, message=message)
+        message_list.append(f'{username} [{user_count}]: {message}')
         return redirect("/")
 
 
