@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Simple BBS</h1>
+<form action="/" method="POST">
+    UserName: <input type="text" name="username">
+    <br>
+    Message: <input type="text" name="message">
+    <br>
+    <input type="submit" name="submit">
+</form>
+
+{% for message in message_list %}
+<hr>
+<li>{{message}}</li>
+{% endfor %}
+
+
+
+</body>
+</html>
