@@ -39,12 +39,12 @@ def form():
         return render_template("board.html", message_list=message_list)
     if request.method == 'POST':
         username = request.form['username']
-        username = my_filter.censor(username)
         user_count = user_list.count(username) + 1
         user_list.append(username)
+        username = my_filter.censor(username)
         message = request.form['message']
         message = my_filter.censor(message)
-        if username == '':
+        if username == '' or username == replace_word:
             message_list.append(f'名無しさん:{message}')
             return redirect("/")
         message_list.append(f'{username} [{user_count}]: {message}')
